@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>yourresceipes</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+      body{
+        background-image: url("https://t4.ftcdn.net/jpg/04/05/83/49/360_F_405834980_q7kToQNejjuNc9MVaLvP0yaiD08Z2Kli.jpg");
+        background-repeat: no-repeat;
+        background-size: cover;
+        background-attachment: fixed;
+        background-position: center;
+        margin: 0;
+        padding: 0;
+        font-family: Arial, sans-serif;
+      }
+      .back{
+        background-color: white;
+        opacity: 0.8;
+        border: 5px solid;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        padding: 10px;
+        border-radius: 5px;
+        border-width: 1px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        width: 90%;
+        max-width: 500px;
+      }
+      .navbar {
+            background-color: #dc3545;
+            padding: 10px;
+            border-radius: 5px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        .navbar .btn {
+            background-color: greenyellow;
+            border-radius: 5px;
+            padding: 5px 10px;
+            text-decoration: none;
+            color: white;
+        }
+        .res{
+          background-color: greenyellow;
+            border-radius: 5px;
+            padding: 5px 10px;
+            text-decoration: none;
+            color: white;
+        }
+        .container {
+            margin-top: 20px;
+        }
+        .card {
+            padding: 20px;
+            border-radius: 10px;
+            background-color: white;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        .form-label {
+            font-weight: bold;
+        }
+        .form-control {
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            margin-bottom: 10px;
+        }
+        .btn-primary {
+            background-color: #007bff;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            color: white;
+            cursor: pointer;
+        }
+        .btn-primary:hover {
+            background-color: #0056b3;
+        }
+        a {
+            color: white;
+            text-decoration: none;
+        }
+        .alert {
+            padding: 10px;
+            border-radius: 5px;
+            background-color: #cce5ff;
+            color: #004085;
+            margin-bottom: 20px;
+        }
+        @media (max-width: 760px) {
+          body {
+                background-image: url("https://via.placeholder.com/768");
+                background-size: cover;
+                background-attachment: scroll;
+            }
+            .back {
+                width: 90%;
+                padding: 15px;
+            }
+            .navbar {
+                text-align: center;
+            }
+        }
+        @media (max-width: 480px) {
+          body {
+                background-image: url("https://via.placeholder.com/480");
+                background-size: cover;
+                background-attachment: scroll;
+            }
+            .btn {
+                width: 100%;
+                margin-top: 10px;
+            }
+            .form-control {
+                width: 100%;
+            }
+            .btn-primary {
+                width: 100%;
+            }
+        }
+        @media (max-width: 360px) {
+            body {
+                background-image: url("https://via.placeholder.com/360");
+                background-size: cover;
+                background-attachment: scroll;
+            }
+            .reg {
+                width: 90%;
+                padding: 10px;
+            }
+            .form-control {
+                font-size: 14px;
+            }
+            .btn-primary {
+                font-size: 14px;
+                padding: 10px;
+            }
+            h1, h2 {
+                font-size: 18px;
+            }
+        }
+
+    </style>
+    
+</head>
+<body>
+  <div class="back">
+  <div clas="nav" >
+    <nav class="navbar p-3 bg-danger shadow-lg">
+      <div class="container-fluid">
+        <form class="d-flex" role="search">
+          <!-- to show login button when we log out -->
+         {% if request.user.is_authenticated %}
+         <button style="background-color: greenyellow ; border-radius: 5px;"><a href="/logout" class="btn btn-success" type="submit">logout</a></button> 
+        {% else %}
+        <a href="/login" class="btn btn-success" type="submit">login</a></button> 
+      {% endif %}  
+      </form>
+      <br>
+      <div class="name>">
+        {{request.user}} <br>
+    {{request.user.first_name}}
+  </div>
+      </div>
+    </nav>
+    </div>
+    <div class="container mt-5">
+    <form class="col-6 mx-auto card shadow-lg" method="post" enctype="multipart/form-data">
+      {% csrf_token %}
+      <h2>
+        Login
+      </h2>
+    
+      
+      <hr>
+      {% if messages %}
+      <div class="alert alert-primary" role="alert">
+        {% for message in messages %}
+        {{ message }}
+        {% endfor %}
+        </div>
+        {% endif %}
+
+        <div class="mb-3">
+          <label for="exampleInputEmail1" class="form-label">User Name</label>
+          <input type="text" class="form-control" name="username" id="exampleInputEmail1" aria-describedby="emailHelp">
+          <div id="emailHelp" class="form-text"><h3>We'll never share your Id with anyone else.</h3></div>
+        </div>
+        <div class="mb-3">
+          <label for="exampleInputPassword1" class="form-label">Password</label>
+          <input type="password" name="password" class="form-control" id="exampleInputPassword1">
+        </div>
+        <p> Don't have account     <a href="/register/" class="res"> Register</a></p>
+        <button type="submit" class="btn btn-primary">Submit</button>
+      
+        
+      </form>
+   
+
+ 
+      
+    </div>
+  </div>
+</body>
+</html>

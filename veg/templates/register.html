@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>yourresceipes</title>
+    <style>
+      table,th,td{
+        border:1px solid black;
+      }
+      body{
+        background-image: url("https://static.vecteezy.com/system/resources/previews/003/823/542/non_2x/spices-for-use-as-cooking-ingredients-on-a-wooden-background-with-fresh-vegetables-healthy-food-herbs-organic-vegetables-on-the-table-raw-materials-of-cooking-preparation-tom-yum-free-photo.jpg");
+        background-repeat: no-repeat;
+            background-size: cover;
+            background-attachment: fixed;
+            background-position: center;
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+            height: 100vh;
+      }
+      .reg{
+        background-color: white;
+        opacity: 0.8;
+        border: 5px solid;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        padding: 10px;
+        border-radius: 5px;
+        border-width: 1px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        width: 90%;
+        max-width: 500px;
+      }
+      .card {
+            padding: 20px;
+            border-radius: 10px;
+            background-color: white;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        .form-label {
+            font-weight: bold;
+        }
+        .form-control {
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            margin-bottom: 10px;
+        }
+        .btn-primary {
+            background-color: #007bff;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            color: white;
+            cursor: pointer;
+        }
+        .btn-primary:hover {
+            background-color: #0056b3;
+        }
+        a {
+            color: #007bff;
+            text-decoration: none;
+        }
+        a:hover {
+            text-decoration: underline;
+        }
+        .alert {
+            padding: 10px;
+            border-radius: 5px;
+            background-color: #cce5ff;
+            color: #004085;
+            margin-bottom: 20px;
+        }
+        @media (max-width: 760px) {
+            body {
+                background-image: url("https://via.placeholder.com/768");
+                background-size: cover;
+                background-attachment: scroll;
+            }
+            .reg {
+                width: 90%;
+                padding: 15px;
+            }
+        }
+       
+        @media (max-width: 480px) {
+            body {
+                background-image: url("https://via.placeholder.com/480");
+                background-size: cover;
+                background-attachment: scroll;
+            }
+            .btn {
+                width: 100%;
+                margin-top: 10px;
+            }
+            .form-control {
+                width: 100%;
+            }
+            .btn-primary {
+                width: 100%;
+            }
+            .reg {
+                width: 90%;
+                padding: 15px;
+            }
+        }
+        
+        @media (min-height: 800px) {
+            body {
+                background-image: url("https://via.placeholder.com/1200x800");
+                background-size: cover;
+            }
+            .reg {
+                max-width: 600px;
+                padding: 30px;
+            }
+        }
+        @media (max-height: 600px) {
+            body {
+                background-image: url("https://via.placeholder.com/1200x600");
+                background-size: cover;
+            }
+            .reg {
+                padding: 15px;
+            }
+        }
+        @media (max-width: 360px) {
+            body {
+                background-image: url("https://via.placeholder.com/360");
+                background-size: cover;
+                background-attachment: scroll;
+            }
+            .reg {
+                width: 90%;
+                padding: 10px;
+            }
+            .form-control {
+                font-size: 14px;
+            }
+            .btn-primary {
+                font-size: 14px;
+                padding: 10px;
+            }
+            h1, h2 {
+                font-size: 18px;
+            }
+        }
+    </style>
+</head>
+<body>
+  
+    <div class="reg">
+    <form class="col-6 mx-auto card shadow-lg" method="post" enctype="multipart/form-data">
+      {% csrf_token %}
+      <h2>Register</h2>
+      <h1>Make your own Recipe Book here !!!</h1>
+      <hr>
+      {% if messages %}
+      <div class="alert alert-primary" role="alert">
+        {% for message in messages %}
+        {{ message }}
+        {% endfor %}
+    </div>
+        {% endif %}
+        
+      
+      <div class="mb-3">
+        <label for="exampleInputEmail1" class="form-label">First Name</label>
+        <input type="text" class="form-control" name="first_name" id="exampleInputEmail1" aria-describedby="emailHelp">
+
+      </div>
+      <div class="mb-3">
+        <label for="exampleInputEmail1" class="form-label">Last Name</label>
+        <input type="text" class="form-control" name="last_name" id="exampleInputEmail1" aria-describedby="emailHelp">
+        
+      </div>
+      
+        <div class="mb-3">
+          <label for="exampleInputEmail1" class="form-label">User Name</label>
+          <input type="text" class="form-control" name="username" id="exampleInputEmail1" aria-describedby="emailHelp">
+          
+          <div id="emailHelp" class="form-text" > <h3>We'll never share your Id with anyone else.</h3></div>
+        </div>
+       
+        <div class="mb-3">
+          <label for="exampleInputPassword1" class="form-label">Password</label>
+          <input type="password" class="form-control" name="password" id="exampleInputPassword1">
+        </div>
+        <br>
+        <p>Already have account  <button>  <a href="/login/">Login</a> </button> </p> <br>
+        <button type="submit" class="btn btn-primary">Submit</button>
+      
+        
+      </form>
+   
+
+ 
+      
+    </div>
+   
+</body>
+</html>

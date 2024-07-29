@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>yourresceipes</title>
+    <link rel="stylesheet" href="mystyle.css">
+    <style>
+      table,th,td{
+        border:1px solid black;
+      }
+    </style>
+</head>
+<body>
+    <div class="container mt-5">
+    <form class="col-6 mx-auto card shadow-lg" method="post" enctype="multipart/form-data">
+      {% csrf_token %}
+      <h2> Update receipes</h2>
+    
+        <div class="mb-3">
+          <label for="exampleInputEmail1" class="form-label">Receipe Name</label>
+          <input name="rec_name" value="{{receipes.rec_name}}" required type="text" class="form-control">
+        </div>
+        <div class="mb-3">
+          <label for="exampleInputPassword1"   class="form-label">Receipe Description</label>
+          <textarea class="form-control"  name="rec_desc" value="" required>{{receipes.rec_desc}}</textarea>
+        </div>
+        <div class="mb-3 form-check">
+          
+          <label for="exampleInputPassword1" class="form-label">Receipe Image</label>
+          <input name="rec_image" type="file" class="form-control">
+        </div>
+        <button type="submit" class="btn btn-primary">Update Receipe</button>
+      </form>
+      <!-- {{receipes}} -->
+
+      
+   
+</body>
+</html>
